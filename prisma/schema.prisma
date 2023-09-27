@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Parcel {
+  id            Int    @id @unique
+  position      String
+  rotation      String
+  objectModelId Int?   @map("object_model_id")
+
+  @@map("parcels")
+}
+
+// model Building {
+//   id          String @id @unique @default(uuid())
+//   name        String
+//   description String
+// }
+
+model Land {
+  tokenId         String  @id @unique @map("token_id")
+  size            Int
+  name            String?
+  description     String
+  position        String
+  rotation        String
+  image           String?
+  objectModelId   Int?    @map("object_model_id")
+  buildingModelId Int?    @map("building_model_id")
+
+  @@map("lands")
+}
