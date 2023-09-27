@@ -17,4 +17,12 @@ export class LandService {
       data,
     });
   }
+
+  async findByTokenId(tokenId: string) {
+    return await this.prisma.land.findUnique({
+      where: {
+        tokenId,
+      },
+    });
+  }
 }
