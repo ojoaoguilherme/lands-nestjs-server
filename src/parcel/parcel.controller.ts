@@ -10,8 +10,8 @@ export class ParcelController {
   @Get()
   async findAll(@Res() res: Response) {
     try {
+      console.log('parcels ');
       const parcels = await this.parcelService.findAll();
-      console.log('hit fetch all parcels');
       res.status(HttpStatus.OK).json({ parcels });
     } catch (error) {
       console.log(error);
